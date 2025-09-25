@@ -35,10 +35,10 @@ All explanations are intentionally brief and focused on deliverables. Replace th
 - **QPS**: **Q**ueries **P**er **S**econd; rate of requests handled by the system.
 
 ## Screenshots
-- Task 0: [link-to-your-screenshot-task0]
-- Task 1: [link-to-your-screenshot-task1]
-- Task 2: [link-to-your-screenshot-task2]
-- Task 3: [link-to-your-screenshot-task3]
+- [Task 0](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/0-simple_web_stack.png)
+- [Task 1](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/1-distributed_web_infrastructure.png)
+- [Task 2](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/2-secured_and_monitored_web_infrastructure.png)
+- [Task 3](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/3-scale_up.png)
 
 ## Tasks
 ### Task 0 — Simple web stack
@@ -46,7 +46,7 @@ All explanations are intentionally brief and focused on deliverables. Replace th
 - **Components** (single server `8.8.8.8`): **Nginx**, **App server**, **App files**, **MySQL**, **DNS A** record `www.foobar.com → 8.8.8.8`.
 - **Flow**: DNS resolves → browser sends HTTP/HTTPS to Nginx → reverse proxy to app → optional MySQL query.
 - **Issues**: **SPOF** (one host), **maintenance downtime**, **no scale**.
-- **Screenshot**: [link-to-your-screenshot-task0]
+- **Screenshot**: [task0](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/0-simple_web_stack.png)
 
 ### Task 1 — Distributed web infrastructure (3 servers)
 - **Goal**: Add a **Load Balancer** and two backends.
@@ -54,21 +54,21 @@ All explanations are intentionally brief and focused on deliverables. Replace th
 - **LB**: Round‑Robin; **Active‑Active** at web/app layer.
 - **DB topology**: **Primary → Replica** (writes → Primary; reads → optional Replica; eventual consistency).
 - **Issues**: **SPOFs** remain (single LB, single writer), **no HTTPS**, **no monitoring**.
-- **Screenshot**: [link-to-your-screenshot-task1]
+- **Screenshot**: [task1](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/1-distributed_web_infrastructure.png)
 
 ### Task 2 — Secured & monitored distributed infrastructure (3 servers)
 - **Goal**: Encrypted traffic, host firewalls, and monitoring.
 - **Added**: Per‑host **firewalls**, **TLS cert** (HTTPS at LB), **monitoring agents** (CPU/RAM/latency/5xx/**QPS** + logs).
 - **QPS collection**: Nginx `stub_status`/VTS or access log parsing → aggregated in monitoring.
 - **Issues**: TLS only at LB (backend leg may be cleartext), single DB writer, all‑in‑one backends.
-- **Screenshot**: [link-to-your-screenshot-task2]
+- **Screenshot**: [task2](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/2-secured_and_monitored_web_infrastructure.png)
 
 ### Task 3 — Scale up (LB cluster + split tiers)
 - **Goal**: Remove LB **SPOF** and split roles for independent scaling.
 - **Added**: Second **HAProxy** + **VIP** via **VRRP/keepalived** (**Active‑Passive**).
 - **Split**: Dedicated **Nginx** web tier, dedicated app tier, dedicated **MySQL** Primary (+ optional replicas).
 - **Scaling**: Add Nginx nodes for **QPS**; add app instances for CPU; scale DB vertically and/or with read replicas.
-- **Screenshot**: [link-to-your-screenshot-task3]
+- **Screenshot**: [task3](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/3-scale_up.png)
 
 ## Quick Reference
 ### DNS
@@ -93,10 +93,10 @@ All explanations are intentionally brief and focused on deliverables. Replace th
 - Single switch/router/ISP (usually out of scope for these tasks).
 
 ## Directory
-- `web_infrastructure_design/`
+- [`web_infrastructure_design/`](https://github.com/Mylliah/holbertonschool-system_engineering-devops/tree/main/web_infrastructure_design)
 
 ## Files
-- `0-simple_web_stack` — link to Task 0 screenshot
-- `1-distributed_web_infrastructure` — link to Task 1 screenshot
-- `2-secured_and_monitored_web_infrastructure` — link to Task 2 screenshot
-- `3-scale_up` — link to Task 3 screenshot
+- [`0-simple_web_stack`](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/0-simple_web_stack.png)
+- [`1-distributed_web_infrastructure`](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/1-distributed_web_infrastructure.png)
+- [`2-secured_and_monitored_web_infrastructure`](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/2-secured_and_monitored_web_infrastructure.png)
+- [`3-scale_up`](https://github.com/Mylliah/holbertonschool-system_engineering-devops/blob/main/web_infrastructure_design/3-scale_up.png)
